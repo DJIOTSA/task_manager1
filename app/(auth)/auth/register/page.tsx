@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import { RegisterForm } from "@/components/organisms/register-form/register-form";
 
 export default function RegisterPage() {
-    return (
-        <div>
-            <h2 className="text-xl font-bold">Register</h2>
-        </div>
-    )
+  return (
+    <div>
+      <RegisterForm />
+    </div>
+  );
 }
