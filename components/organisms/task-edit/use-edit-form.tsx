@@ -1,7 +1,7 @@
 "use client"
 
 import { editTask } from "@/lib/handlers/tasks";
-import { editTaskPayload, editTaskSchema } from "@/lib/types/editTask";
+import { editTaskPayload, editTaskSchema } from "@/lib/types/tasks";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
@@ -17,7 +17,6 @@ export default function useEditFor({ onSuccess }: Props) {
     const form = useForm<editTaskPayload>({
         resolver: zodResolver(editTaskSchema),
         defaultValues: {
-            id: "rer676",
             title: "12345",
         }
     });

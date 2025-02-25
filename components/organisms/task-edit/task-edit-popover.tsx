@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Popover,
   PopoverContent,
@@ -17,17 +15,17 @@ export const TaskEditPopover: React.FC<TaskEditPopoverProps> = ({ taskId }) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline">...</Button>
+        <Button variant="ghost" className="flex justify-start">...</Button>
       </PopoverTrigger>
       <PopoverContent className="w-full">
         <div className="grid gap-4">
-          <Button variant="outline">edit</Button>
+          <Button variant="ghost" className="flex justify-start">edit</Button>
         </div>
         <div className="grid gap-4">
-          <Button variant="outline">Mark as Done</Button>
+          <Button variant="ghost" className="flex justify-start">Mark as Done</Button>
         </div>
         <div className="grid gap-4">
-          <Button variant="outline">Delete</Button>
+          <Button variant="ghost" className="flex justify-start">Delete</Button>
         </div>
       </PopoverContent>
     </Popover>

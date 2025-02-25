@@ -63,7 +63,7 @@ export function LoginForm() {
             href={"/auth/register"}
             className="text-blue-500 ml-3 text-right text-sm"
           >
-            Don't have an account? Sign up
+            {"Don't have an account? Sign up"}
           </Link>
         </form>
       </Form>

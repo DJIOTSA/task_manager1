@@ -14,15 +14,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -80,29 +71,18 @@ export function RegisterForm() {
           />
           <FormField
             control={form.control}
-            name="role"
+            name="password2"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Role</FormLabel>
+                <FormLabel>Confirm Password</FormLabel>
                 <FormControl>
-                  <Select {...field}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="User Type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        <SelectItem value="USER">USER</SelectItem>
-                        <SelectItem value="ADMIN">ADMIN</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
+                  <Input placeholder="....." {...field} type="password" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-
-          <Button disabled={mutation.isLoading} type="submit">
+          <Button className="mt-3" disabled={mutation.isLoading} type="submit">
             {mutation.isLoading ? "Signing Up..." : "Signup"}
           </Button>
           <Link
