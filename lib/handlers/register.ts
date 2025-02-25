@@ -1,7 +1,6 @@
 import { baseUrl } from "../api";
 import { registerPayload } from "../types/register";
 import { login } from "./auth";
-import { ACCESS_TOKEN_KEY, USER_KEY } from "./constants";
 
 export async function register(payload: registerPayload) {
   try {
@@ -23,7 +22,8 @@ export async function register(payload: registerPayload) {
 
     try {
       // login the user after registration
-      const loginRes = await login({ email, password });
+      await login({ email, password });
+
     } catch (err) {
       console.log("unable to login user after registration see error", err);
     }
