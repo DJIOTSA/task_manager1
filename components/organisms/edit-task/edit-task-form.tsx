@@ -65,7 +65,6 @@ export function EditTaskForm({ trigger, taskId, payload }: Props) {
                             )}
                         />
 
-
                         <Button disabled={mutation.isLoading} type="submit">
                             {mutation.isLoading ? submittingButtonText : submitButtonText}
 

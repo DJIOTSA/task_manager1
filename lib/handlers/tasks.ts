@@ -106,3 +106,50 @@ export async function updateTask(id: string, payload: editTaskPayload) {
     return Promise.reject(err);
   }
 }
+
+
+export async function isDoneTask(id: string) {
+  try {
+    const token = currentToken();
+    const res = await fetch(`${baseUrl}/tasks/${id}/complete`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return Promise.reject(data);
+    }
+
+    return Promise.resolve(data);
+  } catch (err) {
+    return Promise.reject(err);
+  }
+}
+
+export async function deleteTask(id: string) {
+  try {
+    const token = currentToken();
+    const res = await fetch(`${baseUrl}/tasks/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+    });
+
+      console.log(res)
+
+    if (!res.ok) {
+      return Promise.reject({errors: {error: res}});
+    }
+
+    return Promise.resolve({status: 204, message:"Task deleted"});
+  } catch (err) {
+    return Promise.reject(err);
+  }
+}

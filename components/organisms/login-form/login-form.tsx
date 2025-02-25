@@ -56,10 +56,11 @@ export function LoginForm() {
               </FormItem>
             )}
           />
+
           <Button disabled={mutation.isLoading} type="submit">
             {mutation.isLoading ? "Logging..." : "Login"}
           </Button>
-          <Link
+          <Link aria-disabled={mutation.isLoading}
             href={"/auth/register"}
             className="text-blue-500 ml-3 text-right text-sm"
           >

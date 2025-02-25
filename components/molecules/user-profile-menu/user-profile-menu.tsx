@@ -4,7 +4,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { logOut } from "@/lib/handlers/auth"
+import { currentUser, logOut, currentUserName } from '@/lib/handlers/auth';
 import { useRouter } from "next/navigation"
 
 export function UserProfileMenu() {
@@ -13,17 +13,20 @@ export function UserProfileMenu() {
         logOut();
         router.push('/auth/login')
     }
+
+    const userName = currentUser().name
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Avatar className="h-9 w-9">
                     <AvatarImage src="/placeholder-user.jpg" alt="@shadcn" />
-                    <AvatarFallback>JP</AvatarFallback>
+                    <AvatarFallback>{userName.slice(0, 2).toUpperCase()}</AvatarFallback>
                     <span className="sr-only">Toggle user menu</span>
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-36">
-                <DropdownMenuItem className="font-bold text-lg">John Doe</DropdownMenuItem>
+                <DropdownMenuItem className="font-bold text-lg">{userName}</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                     <Link href="#" className="block w-full text-left" prefetch={false}>
